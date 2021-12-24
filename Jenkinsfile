@@ -17,10 +17,10 @@ pipeline {
                 }
             }
             steps {
-//                 sh '''
-//                     cd "${WORKSPACE}/"
-//                     chmod 755 *.c
-//                 '''
+                sh '''
+                    cd "${WORKSPACE}/"
+                    chmod 755 *.c
+                '''
 //                 g++ "./cScript.c" -o "cfile/scripts" "cfile/scripts"
                 echo 'test'
             }
