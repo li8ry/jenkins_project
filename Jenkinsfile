@@ -18,6 +18,7 @@ pipeline {
             }
             steps {
 //                 g++ "./cScript.c"
+                echo 'test'
             }
         }
         stage("pythonCode") {
@@ -41,6 +42,7 @@ pipeline {
             }
             steps {
 //                 sh "./bash.sh"
+                echo 'test'
             }
         }
     }   
