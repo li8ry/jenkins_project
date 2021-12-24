@@ -9,7 +9,7 @@ pipeline {
         choice(name: 'VERSION', choices: ['all', 'cCode', 'pythonCode', 'bashCode'], description: 'Chose code example to run')
 //         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
-
+        stages {
         stage("cCode") {
             when {
                 expression { 
