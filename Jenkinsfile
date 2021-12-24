@@ -1,44 +1,49 @@
-def gv
-
 pipeline {
-    agent any
-    parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
-    }
+    agent { node { label 'slave01' } } 
+
     stages {
-        stage("init") {
+        stage ('First') {
+            agent { node { label 'slave01' } } 
             steps {
-                script {
-                   gv = load "script.groovy" 
-                }
+                echo "First dummy stage"
             }
         }
-        stage("build") {
+        stage ('Input') {
+            agent { node { label 'slave01' } } 
             steps {
                 script {
-                    gv.buildApp()
+                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Stage1\nStage2\nStage3', description: '', name: 'Stage')]
                 }
+                echo myStage
             }
         }
-        stage("test") {
+
+        stage('Stage1') {
             when {
-                expression {
-                    params.executeTests
-                }
+                expression { myStage == 'Stage1' }
             }
             steps {
-                script {
-                    gv.testApp()
-                }
+                echo "Running Stage1"
             }
         }
-        stage("deploy") {
+
+        stage('Stage2') {
+            when {
+                expression { myStage == 'Stage2' }
+            }
             steps {
-                script {
-                    gv.deployApp()
-                }
+                echo "Running Stage2"
             }
         }
-    }   
+
+        stage('Stage3') {
+            when {
+                expression { myStage == 'Stage3' }
+            }
+            steps {
+                echo "Running Stage3"
+            }
+        }
+
+    }
 }
