@@ -3,7 +3,7 @@ VERSION = 'all'
 pipeline {
     agent { node { label 'slave01' } }
     triggers {
-        cron('* * * 1 *')
+        cron('* * * * *')
     }
     parameters {
         choice(name: 'VERSION', choices: ['all', 'cCode', 'pythonCode', 'bashCode'], description: 'Chose code example to run')
