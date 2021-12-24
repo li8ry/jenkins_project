@@ -17,7 +17,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'test'
+                g ++ './cScript.c'
             }
         }
         stage("pythonCode") {
