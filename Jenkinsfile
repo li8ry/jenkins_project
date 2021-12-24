@@ -32,10 +32,11 @@ pipeline {
                 }
             }
             steps {
-//                 script {
-//                     gv.buildApp()
-//                 }
-                echo 'test'
+                sh '''
+                    cd "${WORKSPACE}/"
+                    chmod 755 *.py
+                '''
+                python3 './python.py'
             }
         }
         stage("bashCode") {
