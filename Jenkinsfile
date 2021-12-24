@@ -6,7 +6,7 @@ pipeline {
         cron('* * * * *')
     }
     parameters {
-        choice(name: 'VERSION', choices: ['cCode', 'pythonCode', 'bashCode'], description: '')
+        choice(name: 'VERSION', choices: ['Chose code example to run', 'cCode', 'pythonCode', 'bashCode'], description: 'Chose code example to run')
 //         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
