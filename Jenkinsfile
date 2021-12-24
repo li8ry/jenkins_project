@@ -1,7 +1,8 @@
 // def gv
 
 pipeline {
-    agent { node { label 'slave01' } }
+//     agent { node { label 'slave01' } }
+    agent any
     parameters {
         choice(name: 'VERSION', choices: ['cCode', 'pythonCode', 'bashCode'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
