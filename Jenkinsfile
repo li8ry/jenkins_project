@@ -21,8 +21,9 @@ pipeline {
                     cd "${WORKSPACE}/"
                     chmod 755 *
                 '''
+                gcc '
                 sh './cScript'
-                echo 'test'
+//                 echo 'test'
             }
         }
         stage("pythonCode") {
@@ -36,7 +37,7 @@ pipeline {
                     cd "${WORKSPACE}/"
                     chmod 755 *.py
                 '''
-                python3 './python.py'
+                python3 'python.py'
             }
         }
         stage("bashCode") {
