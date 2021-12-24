@@ -21,7 +21,7 @@ pipeline {
                     cd "${WORKSPACE}/"
                     chmod 755 *.c
                 '''
-                g++ "./cScript.c" -o "scripts/cfile" "scripts/cfile"
+//                 g++ "./cScript.c" -o "scripts/cfile" "scripts/cfile"
                 echo 'test'
             }
         }
