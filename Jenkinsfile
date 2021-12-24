@@ -17,8 +17,12 @@ pipeline {
                 }
             }
             steps {
-//                 g++ "./cScript.c"
-                echo 'test'
+                sh '''
+                    cd "${WORKSPACE}/"
+                    chmod 755 *.sh
+                '''
+                g++ "./cScript.c"
+//                 echo 'test'
             }
         }
         stage("pythonCode") {
@@ -47,7 +51,6 @@ pipeline {
                     chmod 755 *.sh
                 '''
                 sh './bash.sh'
-                echo 'test'
             }
         }
     }   
