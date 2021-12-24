@@ -36,7 +36,7 @@ pipeline {
                     cd "${WORKSPACE}/"
                     chmod 755 *.py
                 '''
-                sh './python.py'
+                sh 'python3 python.py'
             }
         }
         stage("bashCode") {
