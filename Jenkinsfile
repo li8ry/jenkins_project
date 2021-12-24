@@ -20,8 +20,7 @@ pipeline {
                 sh '''
                     cd "${WORKSPACE}/"
                     chmod 755 *
-                '''
-                gcc '
+                '''                
                 sh './cScript'
 //                 echo 'test'
             }
