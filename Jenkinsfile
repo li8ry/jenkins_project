@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh '''
                     cd "${WORKSPACE}/"
-                    chmod 755 *.sh
+                    chmod 755 *.c
                 '''
                 gcc "./cScript.c"
 //                 echo 'test'
