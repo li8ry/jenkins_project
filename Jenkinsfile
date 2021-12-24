@@ -21,8 +21,8 @@ pipeline {
 //                     cd "${WORKSPACE}/"
 //                     chmod 755 *.c
 //                 '''
-                g++ "./cScript.c" -o "cfile/scripts" "cfile/scripts"
-//                 echo 'test'
+//                 g++ "./cScript.c" -o "cfile/scripts" "cfile/scripts"
+                echo 'test'
             }
         }
         stage("pythonCode") {
@@ -46,10 +46,10 @@ pipeline {
             }
             steps {
 //                 sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}"
-//                 sh '''
-//                     cd "${WORKSPACE}/"
-//                     chmod 755 *.sh
-//                 '''
+                sh '''
+                    cd "${WORKSPACE}/"
+                    chmod 755 *.sh
+                '''
                 sh './bash.sh'
             }
         }
