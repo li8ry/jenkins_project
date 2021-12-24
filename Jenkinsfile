@@ -17,7 +17,7 @@ pipeline {
                 }
             }
             steps {
-                g++ './cScript.c'
+                g++ "./cScript.c"
             }
         }
         stage("pythonCode") {
@@ -40,7 +40,7 @@ pipeline {
                 }
             }
             steps {
-                sh './bash.sh'
+                sh "./bash.sh"
             }
         }
     }   
