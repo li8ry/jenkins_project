@@ -1,4 +1,4 @@
-// def gv
+VERSION = 'none'
 
 pipeline {
     agent { node { label 'slave01' } }
