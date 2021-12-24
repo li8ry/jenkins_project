@@ -17,9 +17,6 @@ pipeline {
                 }
             }
             steps {
-//                 script {
-//                     gv.buildApp()
-//                 }
                 echo 'test'
             }
         }
@@ -43,10 +40,7 @@ pipeline {
                 }
             }
             steps {
-//                 script {
-//                     gv.buildApp()
-//                 }
-                echo 'test'
+                sh './bash.sh'
             }
         }
     }   
