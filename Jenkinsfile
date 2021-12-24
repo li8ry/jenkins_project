@@ -1,4 +1,4 @@
-VERSION = 'none'
+VERSION = 'all'
 
 pipeline {
     agent { node { label 'slave01' } }
@@ -6,7 +6,7 @@ pipeline {
         cron('* * * * *')
     }
     parameters {
-        choice(name: 'VERSION', choices: ['Select from here', 'cCode', 'pythonCode', 'bashCode'], description: 'Chose code example to run')
+        choice(name: 'VERSION', choices: ['all', 'cCode', 'pythonCode', 'bashCode'], description: 'Chose code example to run')
 //         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
@@ -21,7 +21,7 @@ pipeline {
         stage("cCode") {
             when {
                 expression { 
-                    params.VERSION == 'cCode' || params.VERSION == 'Select from here'
+                    params.VERSION == 'cCode' || params.VERSION == 'all'
                 }
             }
             steps {
@@ -34,7 +34,7 @@ pipeline {
         stage("pythonCode") {
             when {
                 expression { 
-                    params.VERSION == 'pythonCode' || params.VERSION == 'Select from here'
+                    params.VERSION == 'pythonCode' || params.VERSION == 'all'
                 }
             }
             steps {
@@ -47,7 +47,7 @@ pipeline {
         stage("bashCode") {
             when {
                 expression { 
-                    params.VERSION == 'bashCode' || params.VERSION == 'Select from here'
+                    params.VERSION == 'bashCode' || params.VERSION == 'all'
                 }
             }
             steps {
