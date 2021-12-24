@@ -41,7 +41,8 @@ pipeline {
                 }
             }
             steps {
-//                 sh "./bash.sh"
+                sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script"
+                sh './bash.sh'
                 echo 'test'
             }
         }
