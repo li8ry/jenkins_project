@@ -1,49 +1,51 @@
-pipeline {
-    agent { node { label 'slave01' } } 
+// def gv
 
+pipeline {
+    agent { node { label 'slave01' } }
+    parameters {
+        choice(name: 'VERSION', choices: ['cCode', 'pythonCode', 'bashCode'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
     stages {
-        stage ('First') {
-            agent { node { label 'slave01' } } 
-            steps {
-                echo "First dummy stage"
-            }
-        }
-        stage ('Input') {
-            agent { node { label 'slave01' } } 
+        stage("init") {
             steps {
                 script {
-                    myStage = input message: 'What stage do you want to run now?', parameters: [choice(choices: 'Stage1\nStage2\nStage3', description: '', name: 'Stage')]
+                   gv = load "script.groovy" 
                 }
-                echo myStage
             }
         }
-
-        stage('Stage1') {
+        stage("cCode") {
             when {
-                expression { myStage == 'Stage1' }
+                expression { params.VERSION == 'cCode' }
             }
             steps {
-                echo "Running Stage1"
+//                 script {
+//                     gv.buildApp()
+//                 }
+                echo 'test'
             }
         }
-
-        stage('Stage2') {
+        stage("pythonCode") {
             when {
-                expression { myStage == 'Stage2' }
+                expression { params.VERSION == 'pythonCode' }
             }
             steps {
-                echo "Running Stage2"
+//                 script {
+//                     gv.buildApp()
+//                 }
+                echo 'test'
             }
         }
-
-        stage('Stage3') {
+        stage("bashCode") {
             when {
-                expression { myStage == 'Stage3' }
+                expression { params.VERSION == 'bashCode' }
             }
             steps {
-                echo "Running Stage3"
+//                 script {
+//                     gv.buildApp()
+//                 }
+                echo 'test'
             }
         }
-
-    }
+    }   
 }
